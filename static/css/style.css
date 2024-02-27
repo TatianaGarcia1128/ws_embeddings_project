@@ -1,0 +1,35 @@
+#chat-box {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 10px;
+    height: 300px; /* Esto limita la altura del área de chat para que tenga un desplazamiento vertical si hay muchos mensajes */
+    overflow-y: auto; /* Esto habilita el desplazamiento vertical si el contenido excede la altura */
+}
+
+#send-button {
+    border-radius: 0 5px 5px 0; /* Esto agrega esquinas redondeadas solo en el lado derecho del botón */
+}
+
+#file-input {
+    display: none; /* Ocultar el input file por defecto */
+}
+
+#upload-button {
+    background-color: #007bff; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espacio alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre él */
+    transition: background-color 0.3s; /* Transición suave en el cambio de color de fondo */
+}
+
+#message-input {
+    border-radius: 5px 0 0 5px; /* Esto agrega esquinas redondeadas solo en el lado izquierdo del campo de entrada */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
