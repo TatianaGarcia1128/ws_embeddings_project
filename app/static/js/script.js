@@ -50,7 +50,21 @@ document.getElementById("file-form").addEventListener("submit", async (event) =>
     event.preventDefault();
     const formData = new FormData();
     formData.append("file", document.getElementById("file-input").files[0]);
+    // Obtener el indicador de carga
+    var loadingIndicator = document.getElementById('loading-indicator');
+    
+    // Obtener el botón de carga
+    var uploadButton = document.getElementById('upload-button');
+    
+    // Mostrar el indicador de carga cuando se hace clic en el botón de carga
+    if (loadingIndicator) {
+        loadingIndicator.style.display = 'block';
+    }
 
+    // Deshabilitar el botón de carga para evitar múltiples envíos
+    if (uploadButton) {
+        uploadButton.disabled = true;
+    }
     try {
         const response = await fetch("/file", {
             method: "POST",
@@ -66,8 +80,28 @@ document.getElementById("file-form").addEventListener("submit", async (event) =>
     } catch (error) {
         showMessage("Error: " + error.message);
     }
+    // Ocultar el indicador de carga cuando se envía el formulario
+    var loadingIndicator = document.getElementById('loading-indicator');
+    if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+    }
+
+    // Habilitar el botón de carga después de enviar el formulario
+    uploadButton.disabled = false;
 });
 
 function showMessage(message) {
     document.getElementById("message").innerText = message;
 }
+
+$(document).ready(function() {
+    // Ocultar el indicador de carga al principio
+    $('.loading-indicator').hide();
+    console.log('entra1')
+});
+
+
+
+
+
+
