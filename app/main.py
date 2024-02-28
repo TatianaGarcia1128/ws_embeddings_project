@@ -29,8 +29,12 @@ async def websocket_endpoint(websocket: WebSocket):
         # await websocket.send_text(f"Result: {answers}")
         # #respuesta=data
         for answer in answers:
+            print(answer)
             await websocket.send_text(f"Result: {answer}")
 
+        file_path = os.path.join("app/files",  filename)
+        if os.path.exists(file_path):
+            os.remove(file_path)  # Eliminar el archivo existente si ya existe
 
 
 @app.post("/file")

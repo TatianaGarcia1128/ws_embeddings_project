@@ -7,10 +7,10 @@ socket.onopen = function(event) {
 };
 
 // Event handler for WebSocket messages received
-// socket.onmessage = function(event) {
-//     const message = event.data;
-//     displayMessage(message);
-// };
+socket.onmessage = function(event) {
+    const message = event.data;
+    displayMessage(message);
+};
 
 // Function to display a message in the chat box
 function displayMessage(message) {
