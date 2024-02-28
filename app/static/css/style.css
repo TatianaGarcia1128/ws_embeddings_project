@@ -24,3 +24,16 @@ h1 {
 .loading-indicator {
     display: none; /* Inicialmente oculto */
 }
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.heart-icon {
+    color: #ff0000; /* Color rojo para el corazón */
+}
