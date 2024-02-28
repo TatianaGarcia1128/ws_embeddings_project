@@ -2,13 +2,13 @@ from fastapi import FastAPI, WebSocket, Request, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from models.question_answer_paraphrase import EMBEDDINGS
+from app.models.question_answer_paraphrase import EMBEDDINGS
 import os
 
 app = FastAPI()
-template = Jinja2Templates(directory="templates")
+template = Jinja2Templates(directory="app/templates")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 model = EMBEDDINGS()
 
@@ -20,17 +20,22 @@ async def index(request: Request):
 @app.websocket("/message")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+    print('hola')
     while True:
         data = await websocket.receive_text()
-        respuesta = model.search_paragraphs(data, filename)
-        #respuesta=data
-        await websocket.send_text(f"Result: {respuesta}")
+        print(data)
+        answers = model.search_paragraphs(data, filename)
+        print(answers)
+        # await websocket.send_text(f"Result: {answers}")
+        # #respuesta=data
+        for answer in answers:
+            await websocket.send_text(f"Result: {answer}")
 
 
 
 @app.post("/file")
 async def upload_file(file: UploadFile = File(...)):
-    UPLOADS_DIRECTORY = "files"
+    UPLOADS_DIRECTORY = "app/files"
     try:
         # Guardar el archivo en una ubicación específica
         file_path = os.path.join(UPLOADS_DIRECTORY, file.filename)
@@ -53,6 +58,6 @@ async def upload_file(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=80)
 
 

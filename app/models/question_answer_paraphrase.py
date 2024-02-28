@@ -4,7 +4,6 @@ import qdrant_client
 from qdrant_client.http.models import Distance, VectorParams
 from qdrant_client.http.models import Batch
 import numpy as np
-import json
 import os
 
 class EMBEDDINGS:
@@ -92,12 +91,13 @@ class EMBEDDINGS:
             id_vectors.append(id_vector)
 
         paragraphs = self._get_paragraphs(filename)
+        answers = []
         # Imprimir la respuesta
         for id in id_vectors:
             print("Respuesta:", paragraphs[id])
-            respuesta = paragraphs[id]
+            answers.append(paragraphs[id])
 
-        return respuesta
+        return answers
 
 
         #https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2

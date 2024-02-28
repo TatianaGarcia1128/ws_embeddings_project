@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ws3"
+version = "0.1.0"
+description = ""
+authors = ["TatianaGarcia1128 <jtatiana1128@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sentence-transformers = "^2.4.0"
+qdrant-client = "^1.7.3"
+numpy = "^1.26.4"
+fastapi = "^0.110.0"
+uvicorn = {extras = ["standard"], version = "^0.27.1"}
+python-multipart = "^0.0.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

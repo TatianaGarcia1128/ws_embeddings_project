@@ -7,10 +7,10 @@ socket.onopen = function(event) {
 };
 
 // Event handler for WebSocket messages received
-socket.onmessage = function(event) {
-    const message = event.data;
-    displayMessage(message);
-};
+// socket.onmessage = function(event) {
+//     const message = event.data;
+//     displayMessage(message);
+// };
 
 // Function to display a message in the chat box
 function displayMessage(message) {
@@ -24,9 +24,18 @@ function displayMessage(message) {
 document.getElementById('send-button').addEventListener('click', function() {
     const messageInput = document.getElementById('message-input');
     const message = messageInput.value;
-    if (message.trim() !== '') {
-        socket.send(message);
-        messageInput.value = '';
+    // Verificar si el estado del WebSocket es OPEN antes de intentar enviar el mensaje
+    if (socket.readyState === WebSocket.OPEN) {
+        // Verificar si el mensaje no está vacío
+        if (message.trim() !== '') {
+            // Enviar el mensaje a través del WebSocket
+            socket.send(message);
+
+            // Limpiar el input de mensaje después de enviarlo
+            messageInput.value = '';
+        }
+    } else {
+        console.error('WebSocket is not open yet.');
     }
 });
 
