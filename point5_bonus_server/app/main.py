@@ -36,12 +36,9 @@ async def websocket_endpoint(websocket: WebSocket):
 async def upload_file(file: UploadFile = File(...)):
     UPLOADS_DIRECTORY = "app/files"
     try:            
-        # Guardar el archivo en una ubicación específica
+        #definition filepath
         file_path = os.path.join(UPLOADS_DIRECTORY, file.filename)
 
-        if os.path.exists(file_path):
-            os.remove(file_path)  # Eliminar el archivo existente si ya existe
-        
         if os.path.exists(file_path):
             os.remove(file_path)  # Eliminar el archivo existente si ya existe
     

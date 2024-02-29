@@ -32,7 +32,7 @@ document.getElementById('send-button').addEventListener('click', function() {
             socket.send(message);
 
             // Limpiar el input de mensaje después de enviarlo
-            //messageInput.value = '';
+            messageInput.value = '';
         }
     } else {
         console.error('WebSocket is not open yet.');
@@ -52,6 +52,8 @@ document.getElementById("file-form").addEventListener("submit", async (event) =>
     formData.append("file", document.getElementById("file-input").files[0]);
 
     // Deshabilitar el botón de carga para evitar múltiples envíos
+    var uploadButton = document.getElementById('upload-button');
+    
     if (uploadButton) {
         uploadButton.disabled = true;
     }
