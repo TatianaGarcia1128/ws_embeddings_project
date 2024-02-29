@@ -16,13 +16,13 @@ pip install poetry
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your/repository.git
+git clone git@github.com:TatianaGarcia1128/ws_embeddings_project.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd WS_EMBEDDINGS_PROJECT
+cd ws_embeddings_project
 ```
 
 3. Navigate to the application directory:
@@ -66,7 +66,11 @@ Ask a question, click the Send button and wait for the top 3 results to appear:
 
 ![imagen](images_readme/answers.jpg)
 
-**Note:** You can ask several questions about the upload document.
+**Note:** You can ask several questions about the upload document. For the sample_1.txt file the following questions are suggested:
+- "How does machine learning help businesses?"
+- "How does machine learning improve financial services?",
+- "What are the strengths of supervised learning?",
+- "How does unsupervised machine learning differ from supervised learning?
 
 **Remember:**
 If you want to make a new query with another file you must refresh the page.
