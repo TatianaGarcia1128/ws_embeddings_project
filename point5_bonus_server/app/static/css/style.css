@@ -20,10 +20,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Estilos personalizados pueden ir aquí */
-.loading-indicator {
-    display: none; /* Inicialmente oculto */
-}
 
 footer {
     background-color: #f8f9fa;
@@ -32,8 +28,4 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-.heart-icon {
-    color: #ff0000; /* Color rojo para el corazón */
 }

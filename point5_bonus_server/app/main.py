@@ -22,27 +22,26 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     print('hola')
     while True:
-        data = await websocket.receive_text()
-        print(data)
-        answers = model.search_paragraphs(data, filename)
+        question = await websocket.receive_text()
+        print(question)
+        answers = model.search_paragraphs(question, filename)
         print(answers)
-        # await websocket.send_text(f"Result: {answers}")
-        # #respuesta=data
+        await websocket.send_text(f"\nQuestion: {question}")
         for answer in answers:
             print(answer)
             await websocket.send_text(f"Result: {answer}")
-
-        file_path = os.path.join("app/files",  filename)
-        if os.path.exists(file_path):
-            os.remove(file_path)  # Eliminar el archivo existente si ya existe
 
 
 @app.post("/file")
 async def upload_file(file: UploadFile = File(...)):
     UPLOADS_DIRECTORY = "app/files"
-    try:
+    try:            
         # Guardar el archivo en una ubicación específica
         file_path = os.path.join(UPLOADS_DIRECTORY, file.filename)
+
+        if os.path.exists(file_path):
+            os.remove(file_path)  # Eliminar el archivo existente si ya existe
+        
         if os.path.exists(file_path):
             os.remove(file_path)  # Eliminar el archivo existente si ya existe
 
