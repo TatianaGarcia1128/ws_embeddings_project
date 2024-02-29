@@ -49,7 +49,7 @@ If you have problems, delete the poetry.lock file and run the installation comma
 To start the chat application, use Uvicorn. Run the following command:
 
 ```bash
-uvicorn main.app:app --reload
+uvicorn app.main:app --reload
 ```
 
 Open the link shown in the console with Ctrl + click on that path:
