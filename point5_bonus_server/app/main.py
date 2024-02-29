@@ -45,10 +45,15 @@ async def upload_file(file: UploadFile = File(...)):
         file_path = os.path.join(UPLOADS_DIRECTORY, file.filename)
         if os.path.exists(file_path):
             os.remove(file_path)  # Eliminar el archivo existente si ya existe
+    
+        # Read the binary content
+        content = await file.read()
 
-        with open(file_path, "wb") as f:
-            content = await file.read()
-            f.write(content)
+        # Decode the content to UTF-8
+        decoded_content = content.decode('utf-8', errors='ignore')  # You can handle errors as per your requirement
+
+        with open(file_path, "w", encoding='utf-8') as f:
+            f.write(decoded_content)
 
         print(file.filename)
         global filename 
