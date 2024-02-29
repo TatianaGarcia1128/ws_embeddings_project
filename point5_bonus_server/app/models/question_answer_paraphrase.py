@@ -21,7 +21,7 @@ class EMBEDDINGS:
         file_path  = os.path.join(script_dir, filename)
 
         # Reading text
-        with open(file_path, 'r') as archivo:
+        with open(file_path, 'r', encoding='utf-8') as archivo:
             # Lee el contenido del archivo y lo almacena en una variable
             content = archivo.read()
 

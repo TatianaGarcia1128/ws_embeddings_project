@@ -6,7 +6,7 @@ authors = ["TatianaGarcia1128 <jtatiana1128@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.9"
 sentence-transformers = "^2.4.0"
 qdrant-client = "^1.7.3"
 numpy = "^1.26.4"
